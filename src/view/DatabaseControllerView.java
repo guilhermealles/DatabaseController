@@ -26,22 +26,20 @@ public class DatabaseControllerView {
 		connection_controller.setQuery(query);
 		try {
 			connection_controller.executeQuery();
+			System.out.println("Sent!");
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		connection_controller.closeConnection();
-		
-		System.out.println("Sent!");
-		
 	}
 
 	public static String GenerateQuery(QueueMessage message) {
-		final String TABLE_NAME = "netcomputing-simple";
+		final String TABLE_NAME = "NetComputing.ncProduction";
 		String insert_clause = "INSERT INTO " + TABLE_NAME + " ";
-		String values_clause = "VALUE ("
+		String values_clause = "VALUES ("
 				+ String.valueOf(message.getOutletId()) + ", "
-				+ String.valueOf(message.getPowerConsumption()) + ");";
+				+ String.valueOf(message.getPowerConsumption()) + ", NOW()" + ");";
 		String final_query = insert_clause + values_clause;
 		
 		return final_query;

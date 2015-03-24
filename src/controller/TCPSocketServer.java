@@ -22,7 +22,8 @@ public class TCPSocketServer {
 	public void listen() {
 		try {
 			ServerSocket socket = new ServerSocket(server_port);
-			System.out.println("Socket is listening...");
+			
+			System.out.println("socket> Socket is listening...");
 			
 			Socket client_socket = socket.accept();
 			

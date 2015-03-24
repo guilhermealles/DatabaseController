@@ -28,9 +28,6 @@ public class DatabaseConnectionController {
 	
 	public void setQuery(String query) {
 		this.query = query;
-		
-		//TODO
-		this.query = "INSERT INTO netcomputing-simple VALUES(1, 42.0);";
 	}
 	
 	public ResultSet executeQuery() throws Exception {

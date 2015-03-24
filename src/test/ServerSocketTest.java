@@ -17,18 +17,12 @@ public class ServerSocketTest {
 	public static void main(String[] args) {
 		Socket s = null;
 		DataOutputStream out;
-		DataInputStream in;
 		try {
 			s = new Socket(SERVER_ADDRESS, SERVER_PORT);
-			in = new DataInputStream(s.getInputStream());
 			out = new DataOutputStream(s.getOutputStream());
-			//out.writeUTF("Hello from Guilherme!");
 			QueueMessage message = new QueueMessage(1, 42);
 			ObjectOutputStream oos = new ObjectOutputStream(out);
 			oos.writeObject(message);
-			
-			//String data = in.readUTF();
-			//System.out.println("From server: " + data);
 		}
 		catch (UnknownHostException e) {
 			System.err.println(e);
