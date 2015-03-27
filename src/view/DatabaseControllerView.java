@@ -1,7 +1,10 @@
 package view;
 
+import java.sql.ResultSet;
+
 import model.QueueMessage;
 import controller.DatabaseConnectionController;
+import controller.DatabaseRequestProcessingThread;
 import controller.QueueMessageProcessingThread;
 
 public class DatabaseControllerView {
@@ -13,20 +16,21 @@ public class DatabaseControllerView {
 		 * Changing a little bit. The database controller will now create two separate threads which will run the sockets for
 		 * receiving messages.
 		 */
-		QueueMessageProcessingThread thread = new QueueMessageProcessingThread();
-		thread.start();
+		QueueMessageProcessingThread queueThread = new QueueMessageProcessingThread();
+		queueThread.start();
+		DatabaseRequestProcessingThread requestThread = new DatabaseRequestProcessingThread();
+		requestThread.start();
+		System.out.println("log> Both threads already started!");
 	}
 	
 	public static void StoreMessageInDatabase(QueueMessage message) {
-		System.out.println("Sending to DB...");
-		
 		String query = GenerateQuery(message);
 		DatabaseConnectionController connection_controller = new DatabaseConnectionController();
 		connection_controller.connect();
 		connection_controller.setQuery(query);
 		try {
-			connection_controller.executeQuery();
-			System.out.println("Sent!");
+			connection_controller.executeUpdateQuery();
+			System.out.println("log> Data stored.");
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -43,5 +47,22 @@ public class DatabaseControllerView {
 		String final_query = insert_clause + values_clause;
 		
 		return final_query;
+	}
+	
+	public static ResultSet QueryDatabase(String query) {
+		System.out.println("log> Querying database...");
+		
+		DatabaseConnectionController connection_controller = new DatabaseConnectionController();
+		connection_controller.connect();
+		connection_controller.setQuery(query);
+		try {
+			ResultSet result = connection_controller.executeQuery();
+			System.out.println("log> Querying OK.");
+			return result;
+		}
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+			return null;
+		}
 	}
 }

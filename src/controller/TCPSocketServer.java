@@ -22,9 +22,7 @@ public class TCPSocketServer {
 	public void listen() {
 		try {
 			ServerSocket socket = new ServerSocket(server_port);
-			
-			System.out.println("socket> Socket is listening...");
-			
+						
 			Socket client_socket = socket.accept();
 			
 			if (server_port == QUEUE_MESSAGE_SOCKET_PORT) {

@@ -30,13 +30,20 @@ public class DatabaseConnectionController {
 		this.query = query;
 	}
 	
-	public ResultSet executeQuery() throws Exception {
+	public void executeUpdateQuery() throws Exception {
 		if (this.query == null) {
-			throw new Exception("Error when executing query (is it null?);");
+			throw new Exception("Error when executing update query (is it null?);");
 		}
 		statement = connection.createStatement();
-		ResultSet result = null;
 		statement.executeUpdate(this.query);
+	}
+	
+	public ResultSet executeQuery() throws Exception {
+		if (this.query == null) {
+			throw new Exception("Error when executing request query(is it null?);");
+		}
+		statement = connection.createStatement();
+		ResultSet result = statement.executeQuery(this.query);
 		return result;
 	}
 	

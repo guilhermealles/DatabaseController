@@ -31,7 +31,6 @@ public class QueueMessageConnectionThread extends Thread {
 		try {
 			ObjectInputStream object_stream = new ObjectInputStream(in);
 			QueueMessage data = (QueueMessage)object_stream.readObject();
-			// TODO still have to check if the following works
 			if (data != null) {
 				DatabaseControllerView.StoreMessageInDatabase(data);
 			}
