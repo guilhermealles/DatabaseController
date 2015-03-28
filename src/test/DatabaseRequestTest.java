@@ -12,7 +12,7 @@ import model.DatabaseRequest;
 import model.RequestResponse;
 
 public class DatabaseRequestTest {
-	private static final String SERVER_ADDRESS = "localhost";
+	private static final String SERVER_ADDRESS = "192.168.0.104";
 	private static final int SERVER_PORT = 10001;
 	
 	public static void main(String[] args) throws Exception {
