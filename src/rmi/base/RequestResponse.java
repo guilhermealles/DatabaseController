@@ -40,4 +40,12 @@ public class RequestResponse implements Serializable {
 		
 		return returnVal;
 	}
+	
+	public ArrayList<Integer> getIdList() {
+		return this.id_list;
+	}
+	
+	public ArrayList<Double> getConsumptionList() {
+		return this.consumption_list;
+	}
 }
