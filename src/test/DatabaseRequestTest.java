@@ -8,8 +8,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import model.DatabaseRequest;
-import model.RequestResponse;
+import rmi.base.DatabaseRequest;
+import rmi.base.RequestResponse;
 
 public class DatabaseRequestTest {
 	private static final String SERVER_ADDRESS = "192.168.0.104";

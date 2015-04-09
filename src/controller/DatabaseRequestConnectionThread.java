@@ -8,8 +8,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.sql.ResultSet;
 
-import model.DatabaseRequest;
-import model.RequestResponse;
+import rmi.base.DatabaseRequest;
+import rmi.base.RequestResponse;
 import view.DatabaseControllerView;
 
 public class DatabaseRequestConnectionThread extends Thread {
