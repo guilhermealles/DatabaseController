@@ -8,8 +8,6 @@ import controller.DatabaseRequestProcessingThread;
 import controller.QueueMessageProcessingThread;
 
 public class DatabaseControllerView {
-	// public static LinkedList<QueueMessage> buffer;
-	// public static LinkedList<RquestResponse> buffer;
 	
 	public static void main(String[] args) {
 		/*
